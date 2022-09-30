@@ -1,0 +1,142 @@
+﻿<Window x:Class="TCP_CommTest_Server.Views.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TCP_CommTest_Server.Views"
+        mc:Ignorable="d"
+        Title="ShellView" Height="380" Width="600">
+    <Window.Resources>
+        <Style x:Key="{x:Type Hyperlink}" TargetType="{x:Type Hyperlink}">
+            <Setter Property="Foreground" Value="Silver"/>
+            <!--<Setter Property="TextDecorations" Value="Underline"/>-->
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#1A6480"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="True">
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="{x:Type Button}">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Style.Resources>
+
+            <Setter Property="Background" Value="#1956DB"/>
+            <Setter Property="Foreground"  Value="WhiteSmoke"/>
+            <Setter Property="FontFamily"  Value="Roboto"/>
+            <Setter Property="FontWeight"  Value="Bold"/>
+            <Setter Property="Height"      Value="24"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#055BA6"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#142559"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="#FF8B8B8B"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="{x:Type TextBox}">
+
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="2"/>
+                </Style>
+            </Style.Resources>
+
+            <Setter Property="FontFamily"  Value="Roboto"/>
+            <Setter Property="Height" Value="22"/>            
+        </Style>
+
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="WhiteSmoke"/>
+        </Style>
+    </Window.Resources>
+
+    <Border Margin="10" Background="#101827" CornerRadius="15">
+        <Grid Margin="10">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="StartListen" Grid.Row="0" Grid.Column="2" Content="Start Server" Width="90" Margin="5"/>
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="Server is localhost" VerticalAlignment="Center" Margin="5"/>
+
+            <TextBlock  Grid.Row="1" Grid.Column="0" Text="Command 1"        TextAlignment="Right"  VerticalAlignment="Center" Margin="5"/>
+            <TextBlock  Grid.Row="1" Grid.Column="2" Text="Auto Response 1"  TextAlignment="Right"  VerticalAlignment="Center" Margin="5"/>
+            <TextBox x:Name="Message1"  Grid.Row="1" Grid.Column="1" Text="" VerticalAlignment="Center" Margin="5"/>
+            <TextBox x:Name="AutoResp1" Grid.Row="1" Grid.Column="3" Text="" VerticalAlignment="Center" Margin="5"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Command 2"        TextAlignment="Right" VerticalAlignment="Center" Margin="10"/>
+            <TextBlock Grid.Row="2" Grid.Column="2" Text="Auto Response 2"  TextAlignment="Right" VerticalAlignment="Center" Margin="10"/>
+            <TextBox x:Name="Message2"  Grid.Row="2" Grid.Column="1" Text="" VerticalAlignment="Center" Padding="2" Margin="5"/>
+            <TextBox x:Name="AutoResp2" Grid.Row="2" Grid.Column="3" Text="" VerticalAlignment="Center" Margin="5"/>
+
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Command 3"        TextAlignment="Right" VerticalAlignment="Center" Margin="10"/>
+            <TextBlock Grid.Row="3" Grid.Column="2" Text="Auto Response 3"  TextAlignment="Right" VerticalAlignment="Center" Margin="10"/>
+            <TextBox x:Name="Message3"  Grid.Row="3" Grid.Column="1" Text="" VerticalAlignment="Center" Margin="5"/>
+            <TextBox x:Name="AutoResp3" Grid.Row="3" Grid.Column="3" Text="" VerticalAlignment="Center" Margin="5"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Command 4"        TextAlignment="Right" VerticalAlignment="Center" Margin="10"/>
+            <TextBlock Grid.Row="4" Grid.Column="2" Text="Auto Response 4"  TextAlignment="Right" VerticalAlignment="Center" Margin="10"/>
+            <TextBox x:Name="Message4"  Grid.Row="4" Grid.Column="1" Text="" VerticalAlignment="Center" Margin="5"/>
+            <TextBox x:Name="AutoResp4" Grid.Row="4" Grid.Column="3" Text="" VerticalAlignment="Center" Margin="5"/>
+
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="Command 5"        TextAlignment="Right" VerticalAlignment="Center" Margin="10"/>
+            <TextBlock Grid.Row="5" Grid.Column="2" Text="Auto Response 5"  TextAlignment="Right" VerticalAlignment="Center" Margin="10"/>
+            <TextBox x:Name="Message5"  Grid.Row="5" Grid.Column="1" Text="" VerticalAlignment="Center" Margin="5"/>
+            <TextBox x:Name="AutoResp5" Grid.Row="5" Grid.Column="3" Text="" VerticalAlignment="Center" Margin="5"/>
+
+            <TextBlock Grid.Row="6" Grid.Column="0" Text="Command 6"        TextAlignment="Right" VerticalAlignment="Center" Margin="10"/>
+            <TextBlock Grid.Row="6" Grid.Column="2" Text="Auto Response 6"  TextAlignment="Right" VerticalAlignment="Center" Margin="10"/>
+            <TextBox x:Name="Message6"  Grid.Row="6" Grid.Column="1" Text="" VerticalAlignment="Center" Margin="5"/>
+            <TextBox x:Name="AutoResp6" Grid.Row="6" Grid.Column="3" Text="" VerticalAlignment="Center" Margin="5"/>
+
+            <TextBlock Grid.Row="7" Grid.Column="0" Text="Command 7"        TextAlignment="Right" VerticalAlignment="Center" Margin="10"/>
+            <TextBlock Grid.Row="7" Grid.Column="2" Text="Auto Response 7"  TextAlignment="Right" VerticalAlignment="Center" Margin="10"/>
+            <TextBox x:Name="Message7"  Grid.Row="7" Grid.Column="1" Text="" VerticalAlignment="Center" Margin="5"/>
+            <TextBox x:Name="AutoResp7" Grid.Row="7" Grid.Column="3" Text="" VerticalAlignment="Center" Margin="5"/>
+
+        </Grid>
+    </Border>
+    
+</Window>
